@@ -1,0 +1,275 @@
+.container {
+    margin: auto;
+    max-width: 1180px;
+}
+
+.header {
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+}
+
+.header_logo_img {
+    width: 70px;
+    height: 70px;
+}
+
+.header_logo {
+    display: flex;
+    align-items: center;
+}
+
+.header_logo_title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.header_nav {
+    display: flex;
+    align-items: center;
+}
+
+.header_nav ul {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.main {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.main_desc {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px;
+}
+
+.main_button {
+    padding: 10px 5px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main_button_ {
+    background-color: aqua;
+}
+
+.main_button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
+}
+
+.main_buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.main_title {
+    padding-top: 30px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.main_form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main_form_label {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.main_form_input {
+    border: 1px solid black; /* Исходная граница */
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.main_form_button {
+    padding: 10px 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.main_form_input:focus {
+    border-color: transparent; /* Оставляем прозрачной при фокусе */
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); /* Убираем обводку по умолчанию */
+}
+
+.score-container {
+    position: relative;
+}
+
+.score-img {
+    border-radius: 15px;
+}
+
+.score-text {
+    font-size: 51px;
+    color: #fff;
+}
+
+.score {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-top: 35px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table tr {
+    padding-left: 10px;
+}
+
+.table th {
+    padding: 5px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tr:first-child {
+    padding: 5px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.result th {
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.player1, .player2 {
+    font-size: 40px;
+}
+
+.player1 td, .player2 td {
+    width: 5%;
+    padding: 60px 5px;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.table-text + .table-text {
+    text-align: center;
+}
+
+.score-btn {
+    font-size: 20px;
+    background-color: #42a7f5;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 12px 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.form-matches {
+    width: 100%;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-filter {
+    width: 100%;
+    border-radius: 15px;
+    background-color: #dddddd;
+    border: none;
+    padding-left: 30px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    color: #000;
+}
+
+.table-matches {
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+.table-matches th {
+    font-weight: bold;
+    padding: 5px;
+    background: #dddddd;
+    border: 1px solid #dddddd;
+}
+
+.table-matches td {
+    width: 33%;
+    border-bottom: 1px solid #dddddd;
+    padding: 51px 0;
+    text-align: center;
+}
+
+.table-matches tr td:first-child, .table-matches tr th:first-child {
+    border-left: none;
+}
+
+.table-matches tr td:last-child, .table-matches tr th:last-child {
+    border-right: none;
+}
+
+.winner-name-td {
+    background-color: #dddddd;
+    display: block;
+    width: 38%;
+    margin: 0 auto;
+    border-radius: 18px;
+}
+
+.prev, .next {
+    text-decoration: none;
+    font-size: 40px;
+    color: #000;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+.pagination {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.num-page {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
