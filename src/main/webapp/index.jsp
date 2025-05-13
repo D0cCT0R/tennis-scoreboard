@@ -31,9 +31,13 @@
         Manage your tennis matches, record results, and track rankings
     </p>
     <div class="main_buttons">
-        <button class="main_button main_button_"><a href="${pageContext.request.contextPath}/new-match">Start a new
-            match</a></button>
-        <button class="main_button"><a href="${pageContext.request.contextPath}/matches">View match results</a></button>
+        <a href="${pageContext.request.contextPath}/new-match">
+            <button class="main_button main_button_">Start a new
+                match</button>
+        </a>
+        <a href="${pageContext.request.contextPath}/matches">
+            <button class="main_button">View match results</button>
+        </a>
     </div>
 </section>
 </body>

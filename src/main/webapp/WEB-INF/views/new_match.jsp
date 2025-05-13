@@ -29,6 +29,9 @@
 </header>
 <main>
     <h2 class="main_title">Start a new match</h2>
+    <c:if test="${not empty error}">
+        <div class="invalid-feedback" style="color: red; text-align: center">${error}</div>
+    </c:if>
     <form action="${pageContext.request.contextPath}/new-match" method="post" class="main_form">
         <label for="player1" class="main_form_label">Player 1:</label>
         <input

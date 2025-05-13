@@ -31,6 +31,5 @@ public class ConvertToDto {
                 .id(player.getId())
                 .name(player.getName())
                 .build();
-
     }
 }

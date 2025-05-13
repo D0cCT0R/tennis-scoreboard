@@ -3,12 +3,14 @@ package com.example.tennisscoreboard.models.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Getter
 @Setter
 public class CurrentMatch {
     private UUID uuid;
+    private final Instant createdAt;
     private String namePlayer1;
     private String namePlayer2;
     private String winnerPlayer;
@@ -29,6 +31,7 @@ public class CurrentMatch {
         this.uuid = uuid;
         this.namePlayer1 = namePlayer1;
         this.namePlayer2 = namePlayer2;
+        this.createdAt = Instant.now();
     }
 
     public String translatePointPlayer(int points) {
