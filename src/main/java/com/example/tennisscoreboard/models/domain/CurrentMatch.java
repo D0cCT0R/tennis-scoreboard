@@ -95,12 +95,10 @@ public class CurrentMatch {
         tieBreakPointPlayer2 = 0;
     }
 
-
     public void checkDeuce() {
         deuce = pointPlayer1 >= 3
                 && pointPlayer2 >= 3;
     }
-
 
     public void checkTieBreak() {
         tieBreak = (gamePlayer1 == 6 && gamePlayer2 == 6);
