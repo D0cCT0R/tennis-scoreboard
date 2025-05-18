@@ -8,11 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" isErrorPage="true" %>
 <html>
 <head>
-    <title>Ошибка 404</title>
+    <title>error</title>
 </head>
 <body>
-<h1 style="text-align: center">Матч не найден</h1>
 <p style="font-size: 20px; text-align: center">${errorMessage}</p>
-<a href="${pageContext.request.contextPath}/new-match" style="font-size: 20px; text-align: center; display: block">Создать новый матч</a>
+<a href="${pageContext.request.contextPath}/" style="font-size: 20px; text-align: center; display: block">Перейти на главную страницу</a>
 </body>
 </html>

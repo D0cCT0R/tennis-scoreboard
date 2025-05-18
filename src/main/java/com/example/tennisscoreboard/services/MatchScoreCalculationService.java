@@ -8,12 +8,12 @@ public class MatchScoreCalculationService {
 
     public void calculate(CurrentMatch currentMatch, String winner) {
         if (Objects.equals(winner, "player1")) {
-            if(currentMatch.isDeuce()){
+            if (currentMatch.isDeuce()) {
                 currentMatch.incrementPointPlayer1();
                 calculateDeuce(currentMatch);
                 return;
             }
-            if(currentMatch.isTieBreak()){
+            if (currentMatch.isTieBreak()) {
                 currentMatch.incrementTieBreakPointPlayer1();
                 calculateTieBreak(currentMatch);
                 return;
@@ -22,12 +22,12 @@ public class MatchScoreCalculationService {
             currentMatch.checkDeuce();
             checkGameWinner(currentMatch);
         } else if (Objects.equals(winner, "player2")) {
-            if(currentMatch.isDeuce()){
+            if (currentMatch.isDeuce()) {
                 currentMatch.incrementPointPlayer2();
                 calculateDeuce(currentMatch);
                 return;
             }
-            if(currentMatch.isTieBreak()){
+            if (currentMatch.isTieBreak()) {
                 currentMatch.incrementTieBreakPointPlayer2();
                 calculateTieBreak(currentMatch);
                 return;
@@ -59,7 +59,7 @@ public class MatchScoreCalculationService {
             if (currentMatch.getGamePlayer1() > currentMatch.getGamePlayer2()) {
                 currentMatch.incrementSetsPlayer1();
                 checkMatchWinner(currentMatch);
-            } else if(currentMatch.getGamePlayer2() > currentMatch.getGamePlayer1()){
+            } else if (currentMatch.getGamePlayer2() > currentMatch.getGamePlayer1()) {
                 currentMatch.incrementSetsPlayer2();
                 checkMatchWinner(currentMatch);
             }
@@ -77,18 +77,17 @@ public class MatchScoreCalculationService {
         if (currentMatch.getPointPlayer1() == 4 && currentMatch.getPointPlayer2() == 4) {
             currentMatch.setPointPlayer1(3);
             currentMatch.setPointPlayer2(3);
-        }
-        else if (currentMatch.getPointPlayer1() == 5) {
+        } else if (currentMatch.getPointPlayer1() == 5) {
             currentMatch.incrementGamePlayer1();
             checkSetsWinner(currentMatch);
             currentMatch.setDeuce(false);
-        }
-        else if(currentMatch.getPointPlayer2() == 5){
+        } else if (currentMatch.getPointPlayer2() == 5) {
             currentMatch.incrementGamePlayer2();
             checkSetsWinner(currentMatch);
             currentMatch.setDeuce(false);
         }
     }
+
     private void calculateTieBreak(CurrentMatch currentMatch) {
         if (currentMatch.getTieBreakPointPlayer1() >= 7 && (currentMatch.getTieBreakPointPlayer1() - currentMatch.getTieBreakPointPlayer2() >= 2)) {
             currentMatch.setTieBreak(false);

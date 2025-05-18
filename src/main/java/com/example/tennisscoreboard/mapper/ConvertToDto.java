@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class ConvertToDto {
 
-    public List<MatchDto> matchListToDtoList(List<Match> matches) {
+    public static List<MatchDto> matchListToDtoList(List<Match> matches) {
         return matches.stream()
-                .map(this::matchToDto)
+                .map(ConvertToDto::matchToDto)
                 .collect(Collectors.toList());
     }
 
-    public MatchDto matchToDto(Match match) {
+    private static MatchDto matchToDto(Match match) {
         return MatchDto.builder()
                 .id(match.getId())
                 .player1(playerToDto(match.getPlayer1()))
@@ -26,7 +26,7 @@ public class ConvertToDto {
                 .build();
     }
 
-    public PlayerDto playerToDto(Player player) {
+    private static PlayerDto playerToDto(Player player) {
         return PlayerDto.builder()
                 .id(player.getId())
                 .name(player.getName())

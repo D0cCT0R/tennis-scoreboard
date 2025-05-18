@@ -98,8 +98,7 @@ public class CurrentMatch {
 
     public void checkDeuce() {
         deuce = pointPlayer1 >= 3
-                && pointPlayer2 >= 3
-                && pointPlayer1 == pointPlayer2;
+                && pointPlayer2 >= 3;
     }
 
 

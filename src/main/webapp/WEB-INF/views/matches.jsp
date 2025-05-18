@@ -45,20 +45,25 @@
             </div>
         </div>
 
-        <table class="table-matches">
-            <tr>
-                <th>Player One</th>
-                <th>Player Two</th>
-                <th>Winner</th>
-            </tr>
-            <c:forEach items="${matches}" var="match">
+        <c:if test="${empty error}">
+            <table class="table-matches">
                 <tr>
-                    <td>${match.player1.name}</td>
-                    <td>${match.player2.name}</td>
-                    <td><span class="winner-name-td">${match.winner.name}</span></td>
+                    <th>Player One</th>
+                    <th>Player Two</th>
+                    <th>Winner</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${matches}" var="match">
+                    <tr>
+                        <td>${match.player1.name}</td>
+                        <td>${match.player2.name}</td>
+                        <td><span class="winner-name-td">${match.winner.name}</span></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+        <c:if test="${not empty error}">
+            <div class="invalid-feedback" style="color: red; text-align: center">${error}</div>
+        </c:if>
 
         <div class="pagination">
             <c:if test="${page > 1}">

@@ -1,16 +1,19 @@
 package com.example.tennisscoreboard.dao;
 
 
+import com.example.tennisscoreboard.exception.MatchSaveException;
+import com.example.tennisscoreboard.exception.MatchSearchException;
 import com.example.tennisscoreboard.models.entity.Match;
 import com.example.tennisscoreboard.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
 public class MatchesDao {
 
-    public List<Match> getAll(int page, int size, String playerName) {
+    public List<Match> getAll(int page, int size, String playerName) throws MatchSearchException {
         try (Session session = HibernateUtil.getSession()) {
             try {
                 String hql = "FROM Match m WHERE (:playerName IS NULL OR m.player1.name LIKE :playerName OR m.player2.name LIKE :playerName)";
@@ -19,19 +22,19 @@ public class MatchesDao {
                         .setParameter("playerName", "%" + playerName + "%")
                         .setFirstResult((page - 1) * size)
                         .setMaxResults(size);
-                if (playerName == null || playerName.isEmpty()) {
+                if (playerName == null || playerName.isBlank()) {
                     matches.setParameter("playerName", null);
                 }
                 session.getTransaction().commit();
                 return matches.getResultList();
             } catch (Exception e) {
                 session.getTransaction().rollback();
-                throw new RuntimeException("Неудалось найти матчи");
+                throw new MatchSearchException("Не удалось найти матчи");
             }
         }
     }
 
-    public void save(Match match) {
+    public void save(Match match) throws MatchSaveException {
         try (Session session = HibernateUtil.getSession()) {
             session.beginTransaction();
             try {
@@ -39,7 +42,7 @@ public class MatchesDao {
                 session.getTransaction().commit();
             } catch (Exception e) {
                 session.getTransaction().rollback();
-                throw new RuntimeException("Неудалось добавить матч");
+                throw new MatchSaveException("Не удалось добавить матч");
             }
         }
     }

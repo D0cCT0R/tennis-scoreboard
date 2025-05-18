@@ -2,7 +2,7 @@ package com.example.tennisscoreboard.controllers;
 
 
 import com.example.tennisscoreboard.models.domain.CurrentMatch;
-import com.example.tennisscoreboard.storage.CurrentMatchStorage;
+import com.example.tennisscoreboard.services.OngoingMatchesService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,6 +15,12 @@ import java.util.UUID;
 
 @WebServlet("/new-match")
 public class NewMatchController extends HttpServlet {
+    private OngoingMatchesService ongoingMatchesService;
+
+    @Override
+    public void init() {
+        ongoingMatchesService = (OngoingMatchesService) getServletContext().getAttribute("ongoingMatchesService");
+    }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/new_match.jsp");
@@ -25,6 +31,11 @@ public class NewMatchController extends HttpServlet {
         String player1 = req.getParameter("player1");
         String player2 = req.getParameter("player2");
         String nameRegex = "^[\\p{L} .']+$";
+        if (player1.isBlank() || player2.isBlank()) {
+            req.setAttribute("error", "Вы не ввели имя");
+            req.getRequestDispatcher("/WEB-INF/views/new_match.jsp").forward(req, resp);
+            return;
+        }
         if (!player1.matches(nameRegex) || !player2.matches(nameRegex)) {
             req.setAttribute("error", "Имена могут состоять только из букв");
             req.getRequestDispatcher("/WEB-INF/views/new_match.jsp").forward(req, resp);
@@ -37,7 +48,7 @@ public class NewMatchController extends HttpServlet {
         }
         UUID matchUuid = UUID.randomUUID();
         CurrentMatch currentMatch = new CurrentMatch(matchUuid, player1, player2);
-        CurrentMatchStorage.addMatch(matchUuid, currentMatch);
+        ongoingMatchesService.addMatch(matchUuid, currentMatch);
         resp.sendRedirect(req.getContextPath() + "/match-score?uuid=" + matchUuid);
     }
 }
